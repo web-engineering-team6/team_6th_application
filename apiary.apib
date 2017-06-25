@@ -3,12 +3,12 @@ HOST: http://polls.apiblueprint.org/
 
 # Web-engineering-team6 API
 
-## FaceAnalysis [/face_analysis/imageAnalysis{?imageId,analysisType}]
+## FaceAnalysis [/v1/faceAnalysis{?imageId,analysisType}]
 
 ### Face Analysis [GET]
 
-* imgフォルダーにimageIDの名前で画像を保存してください。
-* analysisTypeにsourceやanimelなどを入れてください。
+* imgフォルダーにimageID.pngの名前で画像を保存してください。
+* analysisTypeにsourceやanimalなどを入れてください。
 
 + Parameters
 
@@ -32,4 +32,33 @@ HOST: http://polls.apiblueprint.org/
             }
         ]
     
-+ Response 403 (application/json)
++ Response 400 (application/json)
+
+## ChangeFace [/v1/changeFace]
+
+### Chage Face [POST]
+
+* imgフォルダーにimageID.pngの名前で画像を保存してください。
+
++ Request (application/json)
+
+        {
+            "eachParameterValue": [
+                1.23,
+                2.34,
+                3.45,
+                6.78
+            ]
+        }
+
++ Response 200 (application/json)
+
+        [
+            {
+                'chagedImagePath': 'img/xxxxxx.png'
+            }
+        ]
+        
++ Response 400 (application/json)
+
++ Response 500 (application/json)
