@@ -7,7 +7,7 @@ HOST: http://polls.apiblueprint.org/
 
 ### Face Analysis [GET]
 
-* imgフォルダーにimageID.pngの名前で画像を保存してください。
+* static/imgフォルダーにimageID.pngの名前で画像を保存してください。
 * analysisTypeにsourceやanimalなどを入れてください。
 
 + Parameters
@@ -38,7 +38,7 @@ HOST: http://polls.apiblueprint.org/
 
 ### Chage Face [POST]
 
-* imgフォルダーにimageID.pngの名前で画像を保存してください。
+* static/imgフォルダーにimageID.pngの名前で画像を保存してください。
 
 + Request (application/json)
 
@@ -62,3 +62,7 @@ HOST: http://polls.apiblueprint.org/
 + Response 400 (application/json)
 
 + Response 500 (application/json)
+
+        {
+            'message': 'SERVER Error'
+        }
