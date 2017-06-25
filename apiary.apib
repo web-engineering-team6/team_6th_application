@@ -17,10 +17,19 @@ HOST: http://polls.apiblueprint.org/
 
 + Response 200 (application/json)
 
-        + Attributes
-            + faceComponent (required)
-                + solty : 0.8 (number, required)
-                + soysource : 0.15 (number, required)
-                + source : 0.05 (number, required)
-                
+        [
+            {
+                'attributeName1': 'solty',
+                'attribute1': 0.8
+            },
+            {
+                'attributeName2': 'soysource',
+                'attribute2': 0.15
+            },
+            {
+                'attributeName3': 'source',
+                'attribute2': 0.05
+            }
+        ]
+    
 + Response 403 (application/json)
