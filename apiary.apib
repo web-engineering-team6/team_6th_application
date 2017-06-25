@@ -3,23 +3,24 @@ HOST: http://polls.apiblueprint.org/
 
 # Web-engineering-team6 API
 
-画像をjson形式で入力したら数値が帰ってくるという形はいかがでしょうか。
-
-## FaceAnalysis [/face_analysis]
+## FaceAnalysis [/face_analysis/imageAnalysis{?imageId,analysisType}]
 
 ### Face Analysis [GET]
 
-+ Request JSON Message
+* imgフォルダーにimageIDの名前で画像を保存してください。
+* analysisTypeにsourceやanimelなどを入れてください。
 
-    + Headers
++ Parameters
 
-            Accept: application/json
+    + imageId: 000001 (number, required)
+    + analysisType: source (string, required)
 
 + Response 200 (application/json)
 
-        [
-            {
-                "return": "何かしらの画像？",
-                "published_at": "2015-08-05T08:40:51.620Z",
-            }
-        ]
+        + Attributes
+            + faceComponent (required)
+                + solty : 0.8 (number, required)
+                + soysource : 0.15 (number, required)
+                + source : 0.05 (number, required)
+                
++ Response 403 (application/json)
