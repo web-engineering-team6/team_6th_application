@@ -7,7 +7,7 @@ HOST: http://polls.apiblueprint.org/
 
 ### Face Analysis [GET]
 
-* static/imgフォルダーにimageID.pngの名前で画像を保存してください。
+* static/imgフォルダーに{imageID}.pngの名前で画像を保存してください。
 * analysisTypeにsourceやanimalなどを入れてください。
 
 + Parameters
@@ -38,11 +38,12 @@ HOST: http://polls.apiblueprint.org/
 
 ### Chage Face [POST]
 
-* static/imgフォルダーにimageID.pngの名前で画像を保存してください。
+* static/imgフォルダーに{imageID}.pngの名前で画像を保存してください。
 
 + Request (application/json)
 
         {
+            "imageID": '000001',
             "eachParameterValue": [
                 1.23,
                 2.34,
@@ -55,7 +56,7 @@ HOST: http://polls.apiblueprint.org/
 
         [
             {
-                'chagedImagePath': 'img/xxxxxx.png'
+                'changedImagePath': 'static/img/xxxxxx.png'
             }
         ]
         
