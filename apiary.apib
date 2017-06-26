@@ -13,7 +13,7 @@ HOST: http://polls.apiblueprint.org/
 + Request (application/json)
 
         {
-            "image_url": '/stati/img/000001.png',
+            "image_url": '/static/img/000001.png',
             "analysisType": 'source'
         }
 
@@ -36,6 +36,10 @@ HOST: http://polls.apiblueprint.org/
     
 + Response 400 (application/json)
 
+        {
+            'message': 'Bad Request'
+        }
+
 ## ChangeFace [/v1/changeFace]
 
 ### Change Face [POST]
@@ -45,7 +49,7 @@ HOST: http://polls.apiblueprint.org/
 + Request (application/json)
 
         {
-            "image_url": '/stati/img/000001.png',
+            "image_url": '/static/img/000001.png',
             "eachParameterValue": [
                 1.23,
                 2.34,
@@ -63,6 +67,10 @@ HOST: http://polls.apiblueprint.org/
         ]
         
 + Response 400 (application/json)
+
+        {
+            'message': 'Bad Request'
+        }
 
 + Response 500 (application/json)
 
