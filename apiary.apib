@@ -14,7 +14,7 @@ HOST: http://polls.apiblueprint.org/
 
         {
             "image_url": '/static/img/000001.png',
-            "analysisType": 'source'
+            "analysisType": 'seasoning'
         }
 
 + Response 200 (application/json)
@@ -38,6 +38,12 @@ HOST: http://polls.apiblueprint.org/
 
         {
             'message': 'Bad Request'
+        }
+        
++ Response 500 (application/json)
+
+        {
+            'message': 'SERVER Error'
         }
 
 ## ChangeFace [/v1/changeFace]
