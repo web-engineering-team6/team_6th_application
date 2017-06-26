@@ -5,15 +5,17 @@ HOST: http://polls.apiblueprint.org/
 
 ## FaceAnalysis [/v1/faceAnalysis{?imageId,analysisType}]
 
-### Face Analysis [GET]
+### Face Analysis [POST]
 
 * static/imgフォルダーに{imageID}.pngの名前で画像を保存してください。
 * analysisTypeにsourceやanimalなどを入れてください。
 
-+ Parameters
++ Request (application/json)
 
-    + imageId: 000001 (number, required)
-    + analysisType: source (string, required)
+        {
+            "image_url": '/stati/img/000001.png',
+            "analysisType": 'source'
+        }
 
 + Response 200 (application/json)
 
@@ -43,7 +45,7 @@ HOST: http://polls.apiblueprint.org/
 + Request (application/json)
 
         {
-            "imageID": '000001',
+            "image_url": '/stati/img/000001.png',
             "eachParameterValue": [
                 1.23,
                 2.34,
