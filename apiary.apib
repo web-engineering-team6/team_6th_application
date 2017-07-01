@@ -3,7 +3,7 @@ HOST: http://polls.apiblueprint.org/
 
 # Web-engineering-team6 API
 
-## FaceAnalysis [/v1/faceAnalysis{?imageId,analysisType}]
+## FaceAnalysis [/v1/faceAnalysis]
 
 ### Face Analysis [POST]
 
@@ -13,37 +13,37 @@ HOST: http://polls.apiblueprint.org/
 + Request (application/json)
 
         {
-            "image_url": '/static/img/000001.png',
-            "analysisType": 'seasoning'
+            "image_url": "/static/img/000001.png",
+            "analysis_type": "seasoning"
         }
 
 + Response 200 (application/json)
 
         [
             {
-                'attributeName1': 'solty',
-                'attribute1': 0.8
+                "attribute_name1": "solty",
+                "attribute1": 0.8
             },
             {
-                'attributeName2': 'soysource',
-                'attribute2': 0.15
+                "attribute_name2": "soysource",
+                "attribute2": 0.15
             },
             {
-                'attributeName3': 'source',
-                'attribute2': 0.05
+                "attribute_name3": "source",
+                "attribute3": 0.05
             }
         ]
     
 + Response 400 (application/json)
 
         {
-            'message': 'Bad Request'
+            "message": "BAD REQUEST"
         }
         
 + Response 500 (application/json)
 
         {
-            'message': 'SERVER Error'
+            "message": "SERVER ERROR"
         }
 
 ## ChangeFace [/v1/changeFace]
@@ -56,7 +56,7 @@ HOST: http://polls.apiblueprint.org/
 
         {
             "image_url": '/static/img/000001.png',
-            "eachParameterValue": [
+            "each_parameter_value": [
                 1.23,
                 2.34,
                 3.45,
@@ -68,18 +68,18 @@ HOST: http://polls.apiblueprint.org/
 
         [
             {
-                'changedImagePath': 'static/img/xxxxxx.png'
+                "changed_image_path": "static/img/xxxxxx.png"
             }
         ]
         
 + Response 400 (application/json)
 
         {
-            'message': 'Bad Request'
+            "message": "BAD REQUEST"
         }
 
 + Response 500 (application/json)
 
         {
-            'message': 'SERVER Error'
+            "message": "SERVER ERROR"
         }
