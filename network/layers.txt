@@ -1,0 +1,17 @@
+Conv_0	stride=1	pad=1
+BatchNorm_0
+Relu_0
+Pooling_1	pool_h=2	pool_w=2	stride=2	pad=0
+Conv_1	stride=1	pad=1
+BatchNorm_1
+Relu_1
+Pooling_2	pool_h=2	pool_w=2	stride=2	pad=0
+Conv_2	stride=1	pad=1
+BatchNorm_2
+Relu_2
+Pooling_3	pool_h=2	pool_w=2	stride=2	pad=0
+Affine_3	output_shape=None
+BatchNorm_3
+Relu_3
+Affine_4	output_shape=None
+Softmax_5
