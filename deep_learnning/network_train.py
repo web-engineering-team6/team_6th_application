@@ -3,14 +3,11 @@
 import sys, os
 import time
 import numpy as np
-from mnist_load import load_mnist
 from conv_net import ConvNet
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
-from PIL import Image
 from optimization import *
-import pickle
 from trainer import Trainer
 start = time.time()
 
@@ -45,5 +42,3 @@ plt.figure()
 plt.plot(test_acc_list)
 plt.savefig("result/test_acc_list_multi_trainer")
 
-with open('network/mnist_network_trainer.pkl', mode='wb') as f:
-    pickle.dump(network, f)
