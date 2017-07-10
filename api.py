@@ -32,7 +32,11 @@ def changeFace():
     sumPara = eachPara[0] + eachPara[1]
 
     return str(sumPara)
-
+    
+@app.route("/v1/test", methods=['POST'])
+def test_api():
+    
+    return  "test"
 
 if __name__ == '__main__':
     app.run(debug=True)
