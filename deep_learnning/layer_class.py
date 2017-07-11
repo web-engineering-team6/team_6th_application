@@ -218,7 +218,7 @@ class SoftmaxWithLoss:
 
 
 class BatchNormalization:
-    def __init__(self, gamma, beta, init_mu=None, init_std=None):
+    def __init__(self, gamma, beta, init_mu=0, init_std=1):
         self.gamma = gamma
         self.beta = beta
         self.input_shape = None  # Conv層の場合は4次元、全結合層の場合は2次元

@@ -148,7 +148,8 @@ class ConvNet:
                 
             if layer_split[0] == "BatchNorm":
                 layers_txt += "\tinit_mu=%f" % self.layers["BatchNorm" + layer_split[1]].init_mu
-                layers_txt += "\tinit_std=%f" % self.layers["BatchNorm" + layer_split[1]].init_std                gamma = self.layers["BatchNorm" + layer_split[1]].gamma
+                layers_txt += "\tinit_std=%f" % self.layers["BatchNorm" + layer_split[1]].init_std                
+                gamma = self.layers["BatchNorm" + layer_split[1]].gamma
                 beta = self.layers["BatchNorm" + layer_split[1]].beta
                 np.save("%s/%s_gamma.npy" % (dir_name, layer), gamma)
                 np.save("%s/%s_beta.npy" % (dir_name, layer), beta)
