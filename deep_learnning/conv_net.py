@@ -147,8 +147,10 @@ class ConvNet:
                 layers_txt += "\tpad=%i" % self.layers["Pooling" + layer_split[1]].pad
                 
             if layer_split[0] == "BatchNorm":
-                layers_txt += "\tinit_mu=%f" % self.layers["BatchNorm" + layer_split[1]].init_mu
-                layers_txt += "\tinit_std=%f" % self.layers["BatchNorm" + layer_split[1]].init_std                
+                init_mu = self.layers["BatchNorm" + layer_split[1]].init_mu
+                init_std = self.layers["BatchNorm" + layer_split[1]].init_std
+                np.save("%s/%s_initmu.npy" % (dir_name, layer), init_mu)
+                np.save("%s/%s_initstd.npy" % (dir_name, layer), init_std)                    
                 gamma = self.layers["BatchNorm" + layer_split[1]].gamma
                 beta = self.layers["BatchNorm" + layer_split[1]].beta
                 np.save("%s/%s_gamma.npy" % (dir_name, layer), gamma)
@@ -205,14 +207,15 @@ def load_network(dir_name):
                 stride = int(layer_split[3].split("=")[1]), pad = int(layer_split[4].split("=")[1]))
             
         if layer_split[0].split("_")[0] == "BatchNorm":
-            batch_norm_num = layer_split[0].split("_")[1]
+           batch_norm_num = layer_split[0].split("_")[1]
             gamma = np.load("%s/%s_gamma.npy" % (dir_name, layer_split[0]))
             beta = np.load("%s/%s_beta.npy" % (dir_name, layer_split[0]))
+            init_mu = np.load("%s/%s_initmu.npy" % (dir_name, layer_split[0]))
+            init_std = np.load("%s/%s_initstd.npy" % (dir_name, layer_split[0]))
             network.paras["gamma" + batch_norm_num] = gamma
             network.paras["beta" + layer_num] = beta
             network.layers["BatchNorm" + batch_norm_num] =\
-                BatchNormalization(gamma, beta,\
-                 init_mu = float(layer_split[1].split("=")[1]), init_std = float(layer_split[2].split("=")[1]))
+                BatchNormalization(gamma, beta, init_mu = init_mu, init_std = init_std)
                 
         if layer_split[0].split("_")[0] == "Relu":
             layer_num = layer_split[0].split("_")[1]
