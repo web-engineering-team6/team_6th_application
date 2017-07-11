@@ -147,7 +147,8 @@ class ConvNet:
                 layers_txt += "\tpad=%i" % self.layers["Pooling" + layer_split[1]].pad
                 
             if layer_split[0] == "BatchNorm":
-                gamma = self.layers["BatchNorm" + layer_split[1]].gamma
+                layers_txt += "\tinit_mu=%f" % self.layers["BatchNorm" + layer_split[1]].init_mu
+                layers_txt += "\tinit_std=%f" % self.layers["BatchNorm" + layer_split[1]].init_std                gamma = self.layers["BatchNorm" + layer_split[1]].gamma
                 beta = self.layers["BatchNorm" + layer_split[1]].beta
                 np.save("%s/%s_gamma.npy" % (dir_name, layer), gamma)
                 np.save("%s/%s_beta.npy" % (dir_name, layer), beta)
@@ -202,14 +203,15 @@ def load_network(dir_name):
                 Pooling(pool_h = int(layer_split[1].split("=")[1]), pool_w = int(layer_split[2].split("=")[1]),\
                 stride = int(layer_split[3].split("=")[1]), pad = int(layer_split[4].split("=")[1]))
             
-        if layer_split[0].split("_")[0] == "BatchNorm":#ここの部分で問題が生じています
+        if layer_split[0].split("_")[0] == "BatchNorm":
             batch_norm_num = layer_split[0].split("_")[1]
             gamma = np.load("%s/%s_gamma.npy" % (dir_name, layer_split[0]))
             beta = np.load("%s/%s_beta.npy" % (dir_name, layer_split[0]))
             network.paras["gamma" + batch_norm_num] = gamma
             network.paras["beta" + layer_num] = beta
             network.layers["BatchNorm" + batch_norm_num] =\
-                BatchNormalization(gamma, beta)
+                BatchNormalization(gamma, beta,\
+                 init_mu = float(layer_split[1].split("=")[1]), init_std = float(layer_split[2].split("=")[1]))
                 
         if layer_split[0].split("_")[0] == "Relu":
             layer_num = layer_split[0].split("_")[1]

@@ -72,10 +72,8 @@ def softmax(x):
 
 
 def analysis_face(face_image, analysis_type="seasoning"):
-	face_other = np.load("x_train_batch.npy")[:9]
 	face_image = face_image.transpose(2, 0, 1)
 	face_image = face_image[np.newaxis, :, :, :]
-	face_image = np.vstack((face_image, face_other))
 	network = load_network("network")
 	face_data = network.predict(face_image)[0]
 	if np.argmax(face_data) % 2 == 0:
