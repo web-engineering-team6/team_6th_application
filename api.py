@@ -19,7 +19,10 @@ def faceAnalysis():
     
     analysis_result = af.face_analysis_main(image_url, analysis_type)
     
-    return  "test2"#analysis_result
+    print(type(analysis_result))
+    print(analysis_result)
+    
+    return  analysis_result
     
 @app.route('/v1/changeFace', methods=['POST'])
 def changeFace():
