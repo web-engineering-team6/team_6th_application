@@ -83,7 +83,7 @@ def analysis_face(face_image, analysis_type="seasoning"):
 		sex = "girl"
 		face_data = face_data[np.array([False,True,False,True,False,True])]
 	face_data=softmax(face_data)
-	json_data = [{"sex":sex}
+	json_data = [{"sex":sex},
             {
                 "attribute_name1": "solty",
                 "attribute1": face_data[0]

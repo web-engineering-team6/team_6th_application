@@ -207,7 +207,7 @@ def load_network(dir_name):
                 stride = int(layer_split[3].split("=")[1]), pad = int(layer_split[4].split("=")[1]))
             
         if layer_split[0].split("_")[0] == "BatchNorm":
-           batch_norm_num = layer_split[0].split("_")[1]
+            batch_norm_num = layer_split[0].split("_")[1]
             gamma = np.load("%s/%s_gamma.npy" % (dir_name, layer_split[0]))
             beta = np.load("%s/%s_beta.npy" % (dir_name, layer_split[0]))
             init_mu = np.load("%s/%s_initmu.npy" % (dir_name, layer_split[0]))
