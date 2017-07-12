@@ -5,7 +5,9 @@ import api_functions as af
 
 from flask import Flask, request, jsonify
 
+from flask_cors import CORS, cross_origin
 app = Flask(__name__)
+CORS(app)
     
 @app.route("/v1/faceAnalysis", methods=['POST'])
 def faceAnalysis():
